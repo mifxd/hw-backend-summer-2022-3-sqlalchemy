@@ -63,7 +63,7 @@ class QuizAccessor(BaseAccessor):
             )
             result = await session.execute(query)
 
-            return result.scalar_one_or_none()
+            return result.unique().scalar_one_or_none()
 
     async def list_questions(
         self, theme_id: int | None = None
